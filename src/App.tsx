@@ -2,16 +2,19 @@ import './App.css'
 
 import React from 'react'
 
-const Header = () => <header>Notes.</header>;
-const Notes = () => <main>Poznamky</main>;
+import { Notes } from './features/notes/Notes'
+
+const Header = () => <header>Notes.</header>
 
 function App() {
   return (
     <>
       <Header></Header>
-      <Notes></Notes>
+      <main>
+        <Notes></Notes>
+      </main>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
