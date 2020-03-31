@@ -2,7 +2,7 @@ import './App.css'
 
 import React from 'react'
 
-import { Notes } from './features/notes/Notes'
+import NoteList from './features/notes/NoteList'
 
 const Header = () => <header>Notes.</header>
 
@@ -11,7 +11,7 @@ function App() {
     <>
       <Header></Header>
       <main>
-        <Notes></Notes>
+        <NoteList></NoteList>
       </main>
     </>
   )

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface Note {
+export interface Note {
   id: number
   title: string
 }
 
-type Notes = Note[]
+export type Notes = Note[]
 
 interface NotesState {
   notes: Notes
@@ -19,10 +19,11 @@ export const slice = createSlice({
   name: "notes",
   initialState,
   reducers: {
-    set: (newState: NotesState, action: PayloadAction<NotesState>) => {
-      newState.notes = action.payload.notes
+    setNotes: (newState: NotesState, action: PayloadAction<Notes>) => {
+      newState.notes = action.payload
     },
   },
 })
 
+export const { setNotes } = slice.actions
 export default slice.reducer

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 
+import { RootState } from '../../app/store'
 import { fetchJson } from '../../utils/data'
+import { Notes, setNotes } from './notesSlice'
 
-type Notes = Array<{
-  id: number
-  title: string
-}>
+interface Props {
+  notes: Notes
+  setNotes: (notes: Notes) => void
+}
 
-export const Notes = () => {
+const NoteList = ({ notes, setNotes }: Props) => {
   const [error, setError] = useState<boolean>(false)
-  const [notes, setNotes] = useState<Notes>([])
 
   useEffect(() => {
     fetchJson<Notes>(
@@ -17,7 +19,7 @@ export const Notes = () => {
     )
       .then(data => setNotes(data))
       .catch(error => setError(true))
-  }, [])
+  }, [setNotes])
 
   return (
     <>
@@ -28,3 +30,12 @@ export const Notes = () => {
     </>
   )
 }
+
+const mapStateToProps = (state: RootState) => ({ notes: state.notes.notes })
+
+const mapDispatchToProps = {
+  setNotes,
+}
+
+const ConnectedNoteList = connect(mapStateToProps, mapDispatchToProps)(NoteList)
+export default ConnectedNoteList
