@@ -14,9 +14,9 @@ function App() {
       <main>
         <Router>
           <Switch>
-            <Route path="/note"></Route>
+            <Route path="/note/:noteId"></Route>
             <Route>
-              <NoteList></NoteList>
+              <NoteList />
             </Route>
           </Switch>
         </Router>

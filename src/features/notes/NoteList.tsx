@@ -3,6 +3,7 @@ import { connect, ResolveThunks } from 'react-redux'
 
 import { RootState } from '../../app/store'
 import { loadNotesAsync } from './notesSlice'
+import { Link } from 'react-router-dom'
 
 type Props = ReturnType<typeof mapStateToProps> &
   ResolveThunks<typeof mapDispatchToProps>
@@ -16,7 +17,7 @@ const NoteList: React.FC<Props> = ({ notes, loadNotesAsync }: Props) => {
     <>
       {notes.map(note => (
         <div key={note.id}>
-          <a href={`/note/${note.id}`}>{note.title}</a>
+          <Link to={`/note/${note.id}`}>{note.title}</Link>
         </div>
       ))}
     </>
