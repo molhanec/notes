@@ -15,7 +15,9 @@ const NoteList: React.FC<Props> = ({ notes, loadNotesAsync }: Props) => {
   return (
     <>
       {notes.map(note => (
-        <div key={note.id}>{note.title}</div>
+        <div key={note.id}>
+          <a href={`/note/${note.id}`}>{note.title}</a>
+        </div>
       ))}
     </>
   )

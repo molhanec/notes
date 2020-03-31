@@ -1,6 +1,7 @@
 import './App.css'
 
 import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import NoteList from './features/notes/NoteList'
 
@@ -11,7 +12,14 @@ function App() {
     <>
       <Header></Header>
       <main>
-        <NoteList></NoteList>
+        <Router>
+          <Switch>
+            <Route path="/note"></Route>
+            <Route>
+              <NoteList></NoteList>
+            </Route>
+          </Switch>
+        </Router>
       </main>
     </>
   )
