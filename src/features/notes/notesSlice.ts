@@ -29,9 +29,7 @@ export const slice = createSlice({
 })
 
 export const loadNotesAsync = (): AppThunk => async dispatch => {
-  const data = await fetchJson<Notes>(
-    "https://private-anon-3ab0da907c-note10.apiary-mock.com/notes"
-  )
+  const data = await fetchJson<Notes>("notes")
   dispatch(setNotes(data))
 }
 
