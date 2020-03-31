@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { connect, ResolveThunks } from 'react-redux'
 
 import { RootState } from '../../app/store'
-import { fetchJson } from '../../utils/data'
-import { Notes, setNotes } from './notesSlice'
+import { loadNotesAsync } from './notesSlice'
 
-interface Props {
-  notes: Notes
-  setNotes: (notes: Notes) => void
-}
+type Props = ReturnType<typeof mapStateToProps> &
+  ResolveThunks<typeof mapDispatchToProps>
 
-const NoteList = ({ notes, setNotes }: Props) => {
-  const [error, setError] = useState<boolean>(false)
-
+const NoteList: React.FC<Props> = ({ notes, loadNotesAsync }: Props) => {
   useEffect(() => {
-    fetchJson<Notes>(
-      "https://private-anon-3ab0da907c-note10.apiary-mock.com/notes"
-    )
-      .then(data => setNotes(data))
-      .catch(error => setError(true))
-  }, [setNotes])
+    loadNotesAsync()
+  }, [loadNotesAsync])
 
   return (
     <>
-      {error && <div>Cannot get the data!</div>}
       {notes.map(note => (
         <div key={note.id}>{note.title}</div>
       ))}
@@ -34,7 +24,7 @@ const NoteList = ({ notes, setNotes }: Props) => {
 const mapStateToProps = (state: RootState) => ({ notes: state.notes.notes })
 
 const mapDispatchToProps = {
-  setNotes,
+  loadNotesAsync,
 }
 
 const ConnectedNoteList = connect(mapStateToProps, mapDispatchToProps)(NoteList)
