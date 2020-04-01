@@ -5,6 +5,7 @@ import { RootState } from "../../app/store"
 import { loadNoteDetailsAsync, setNoteDetails } from "./noteDetailsSlice"
 import { RouteComponentProps } from "react-router-dom"
 import EditNoteForm from "../noteForm/EditNoteForm"
+import { deleteNoteAsync } from "../../app/data"
 
 type RouterParams = RouteComponentProps<{
   noteId: string
@@ -19,6 +20,8 @@ const NoteDetails: React.FC<Props> = ({
   noteDetails,
   loadNoteDetailsAsync,
   setNoteDetails,
+  deleteNoteAsync,
+  progress,
 }: Props) => {
   useEffect(() => {
     setNoteDetails(undefined)
@@ -27,16 +30,29 @@ const NoteDetails: React.FC<Props> = ({
 
   if (!noteDetails) return null
 
-  return <EditNoteForm />
+  const handleDelete = () => {
+    deleteNoteAsync(noteDetails.id)
+  }
+
+  return (
+    <>
+      <EditNoteForm />
+      <button onClick={handleDelete} disabled={progress}>
+        Delete
+      </button>
+    </>
+  )
 }
 
 const mapStateToProps = (state: RootState) => ({
   noteDetails: state.noteDetails.noteDetails,
+  progress: state.info.info.progress,
 })
 
 const mapDispatchToProps = {
   loadNoteDetailsAsync,
   setNoteDetails,
+  deleteNoteAsync,
 }
 
 const ConnectedNoteDetails = connect(

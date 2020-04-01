@@ -1,17 +1,17 @@
-import './index.css'
+import "./index.css"
 
-import { ConnectedRouter } from 'connected-react-router'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import { ConnectedRouter } from "connected-react-router"
+import React from "react"
+import ReactDOM from "react-dom"
+import { Provider, ReactReduxContext } from "react-redux"
 
-import App from './App'
-import { history, store } from './app/store'
-import * as serviceWorker from './serviceWorker'
+import App from "./App"
+import { history, store } from "./app/store"
+import * as serviceWorker from "./serviceWorker"
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
+  <Provider store={store} context={ReactReduxContext}>
+    <ConnectedRouter history={history} context={ReactReduxContext}>
       <App />
     </ConnectedRouter>
   </Provider>,

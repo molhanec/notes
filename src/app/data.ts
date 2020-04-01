@@ -1,6 +1,9 @@
 import { AppThunk } from "./store"
 import { setNote } from "../features/noteList/notesSlice"
 import { setProgress, setSuccess, setError } from "../features/info/infoSlice"
+import { push } from "connected-react-router"
+import { setNoteDetails } from "../features/noteDetails/noteDetailsSlice"
+import { batch } from "react-redux"
 
 const rootDataUrl =
   "https://private-anon-3ab0da907c-note10.apiary-mock.com/notes"
@@ -34,8 +37,10 @@ export const addNoteAsync = (title: string): AppThunk => async dispatch => {
     .then(checkResponseStatus)
     .then(response => response.json())
     .then(note => {
-      dispatch(setSuccess("New note added"))
-      dispatch(setNote(note))
+      batch(() => {
+        dispatch(setSuccess("New note added"))
+        dispatch(setNote(note))
+      })
     })
     .catch(() => {
       dispatch(setError("Cannot add new note"))
@@ -59,10 +64,30 @@ export const updateNoteAsync = (
     .then(checkResponseStatus)
     .then(response => response.json())
     .then(note => {
-      dispatch(setSuccess("Note updated"))
-      dispatch(setNote(note))
+      batch(() => {
+        dispatch(setSuccess("Note updated"))
+        dispatch(setNote(note))
+      })
     })
     .catch(() => {
       dispatch(setError("Cannot update note"))
+    })
+}
+
+export const deleteNoteAsync = (id: number): AppThunk => async dispatch => {
+  dispatch(setProgress())
+  fetch(`${rootDataUrl}/${id}`, {
+    method: "DELETE",
+  })
+    .then(checkResponseStatus)
+    .then(() => {
+      batch(() => {
+        dispatch(setNoteDetails(undefined))
+        dispatch(setSuccess("Note deleted"))
+        dispatch(push("/"))
+      })
+    })
+    .catch(() => {
+      dispatch(setError("Cannot delete note"))
     })
 }

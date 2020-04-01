@@ -7,7 +7,11 @@ import { RootState } from "../../app/store"
 type Props = ReturnType<typeof mapStateToProps> &
   ResolveThunks<typeof mapDispatchToProps>
 
-export const EditNoteForm = ({ noteDetails, updateNoteAsync }: Props) => {
+export const EditNoteForm = ({
+  noteDetails,
+  progress,
+  updateNoteAsync,
+}: Props) => {
   const handleSubmit = (title: string): string => {
     if (!noteDetails) return title
     updateNoteAsync(noteDetails.id, title)
@@ -16,7 +20,7 @@ export const EditNoteForm = ({ noteDetails, updateNoteAsync }: Props) => {
 
   return (
     <NoteForm
-      disabled={!noteDetails}
+      disabled={!noteDetails || progress}
       onSubmit={handleSubmit}
       initialTitle={noteDetails?.title || ""}
     />
@@ -25,6 +29,7 @@ export const EditNoteForm = ({ noteDetails, updateNoteAsync }: Props) => {
 
 const mapStateToProps = (state: RootState) => ({
   noteDetails: state.noteDetails.noteDetails,
+  progress: state.info.info.progress,
 })
 
 const mapDispatchToProps = {
