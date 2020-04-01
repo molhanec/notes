@@ -1,8 +1,7 @@
-import "./App.css"
+import { BrowserRouter, Link } from "react-router-dom"
 
 import React from "react"
 import { Routes } from "./routes/Routes"
-import { Link } from "react-router-dom"
 
 import Info from "./features/info/Info"
 
@@ -14,13 +13,13 @@ const Header = () => (
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header></Header>
       <Info />
       <main>
         <Routes />
       </main>
-    </>
+    </BrowserRouter>
   )
 }
 
