@@ -12,16 +12,13 @@ import { setProgress, setSuccess, setError } from "../info/infoSlice"
  * request instead of just reusing the data from the state.
  */
 export interface NoteDetails {
-  id: number
-  title: string
+  id?: number
+  title?: string
 }
 
-interface NoteDetailsState {
-  noteDetails?: NoteDetails
-}
-
-const initialState: NoteDetailsState = {
-  noteDetails: undefined,
+const initialState: NoteDetails = {
+  id: undefined,
+  title: undefined,
 }
 
 const slice = createSlice({
@@ -29,11 +26,9 @@ const slice = createSlice({
   initialState,
   reducers: {
     setNoteDetails: (
-      newState: NoteDetailsState,
+      newState: NoteDetails,
       action: PayloadAction<NoteDetails | undefined>
-    ) => {
-      newState.noteDetails = action.payload
-    },
+    ) => action.payload || initialState,
   },
 })
 

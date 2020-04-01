@@ -17,7 +17,7 @@ export const NewNoteForm = ({ addNoteAsync, progress }: Props) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  progress: state.info.info.progress,
+  progress: state.info.progress,
 })
 
 const mapDispatchToProps = {

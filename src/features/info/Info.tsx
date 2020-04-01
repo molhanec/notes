@@ -16,9 +16,9 @@ const Info: React.FC<Props> = ({ progress, error, success }: Props) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  progress: state.info.info.progress,
-  error: state.info.info.error,
-  success: state.info.info.success,
+  progress: state.info.progress,
+  error: state.info.error,
+  success: state.info.success,
 })
 
 const ConnectedInfo = connect(mapStateToProps)(Info)

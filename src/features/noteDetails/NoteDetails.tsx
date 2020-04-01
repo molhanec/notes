@@ -28,9 +28,10 @@ const NoteDetails: React.FC<Props> = ({
     loadNoteDetailsAsync(match.params.noteId)
   }, [loadNoteDetailsAsync, setNoteDetails, match.params.noteId])
 
-  if (!noteDetails) return null
+  if (!noteDetails.id) return null
 
   const handleDelete = () => {
+    if (!noteDetails.id) return
     deleteNoteAsync(noteDetails.id)
   }
 
@@ -45,8 +46,8 @@ const NoteDetails: React.FC<Props> = ({
 }
 
 const mapStateToProps = (state: RootState) => ({
-  noteDetails: state.noteDetails.noteDetails,
-  progress: state.info.info.progress,
+  noteDetails: state.noteDetails,
+  progress: state.info.progress,
 })
 
 const mapDispatchToProps = {

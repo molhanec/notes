@@ -52,7 +52,7 @@ export const updateNoteAsync = (
   title: string
 ): AppThunk => async dispatch => {
   dispatch(setProgress())
-  fetch(`${rootDataUrl}/id`, {
+  fetch(`${rootDataUrl}/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

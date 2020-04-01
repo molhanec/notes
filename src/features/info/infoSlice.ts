@@ -6,38 +6,32 @@ export interface Info {
   success?: string
 }
 
-interface InfoState {
-  info: Info
-}
-
-const initialState: InfoState = {
-  info: {
-    progress: false,
-    error: undefined,
-    success: undefined,
-  },
+const initialState: Info = {
+  progress: false,
+  error: undefined,
+  success: undefined,
 }
 
 const slice = createSlice({
   name: "info",
   initialState,
   reducers: {
-    setProgress: (newState: InfoState, action: PayloadAction<void>) => {
-      newState.info = {
+    setProgress: (newState: Info, action: PayloadAction<void>) => {
+      return {
         progress: true,
         error: undefined,
         success: undefined,
       }
     },
-    setError: (newState: InfoState, action: PayloadAction<string>) => {
-      newState.info = {
+    setError: (newState: Info, action: PayloadAction<string>) => {
+      return {
         progress: false,
         error: action.payload,
         success: undefined,
       }
     },
-    setSuccess: (newState: InfoState, action: PayloadAction<string>) => {
-      newState.info = {
+    setSuccess: (newState: Info, action: PayloadAction<string>) => {
+      return {
         progress: false,
         error: undefined,
         success: action.payload,

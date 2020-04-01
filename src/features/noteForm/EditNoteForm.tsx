@@ -13,7 +13,7 @@ export const EditNoteForm = ({
   updateNoteAsync,
 }: Props) => {
   const handleSubmit = (title: string): string => {
-    if (!noteDetails) return title
+    if (!noteDetails.id) return title
     updateNoteAsync(noteDetails.id, title)
     return title
   }
@@ -22,14 +22,14 @@ export const EditNoteForm = ({
     <NoteForm
       disabled={!noteDetails || progress}
       onSubmit={handleSubmit}
-      initialTitle={noteDetails?.title || ""}
+      initialTitle={noteDetails.title || ""}
     />
   )
 }
 
 const mapStateToProps = (state: RootState) => ({
-  noteDetails: state.noteDetails.noteDetails,
-  progress: state.info.info.progress,
+  noteDetails: state.noteDetails,
+  progress: state.info.progress,
 })
 
 const mapDispatchToProps = {
