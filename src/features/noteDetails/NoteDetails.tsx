@@ -4,6 +4,7 @@ import { connect, ResolveThunks } from "react-redux"
 import { RootState } from "../../app/store"
 import { loadNoteDetailsAsync, setNoteDetails } from "./noteDetailsSlice"
 import { RouteComponentProps } from "react-router-dom"
+import EditNoteForm from "../noteForm/EditNoteForm"
 
 type RouterParams = RouteComponentProps<{
   noteId: string
@@ -26,12 +27,7 @@ const NoteDetails: React.FC<Props> = ({
 
   if (!noteDetails) return null
 
-  return (
-    <div>
-      <p>{noteDetails.id}</p>
-      <p>{noteDetails.title}</p>
-    </div>
-  )
+  return <EditNoteForm />
 }
 
 const mapStateToProps = (state: RootState) => ({

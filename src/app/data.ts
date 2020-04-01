@@ -1,5 +1,5 @@
 import { AppThunk } from "./store"
-import { loadNotesAsync } from "../features/noteList/notesSlice"
+import { setNote } from "../features/noteList/notesSlice"
 import { setProgress, setSuccess, setError } from "../features/info/infoSlice"
 
 const rootDataUrl =
@@ -22,20 +22,47 @@ export const fetchJson = <T>(path: string) =>
 
 export const addNoteAsync = (title: string): AppThunk => async dispatch => {
   dispatch(setProgress())
-  try {
-    fetch(rootDataUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title,
-      }),
-    }).then(checkResponseStatus)
+  fetch(rootDataUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title,
+    }),
+  })
+    .then(checkResponseStatus)
+    .then(response => response.json())
+    .then(note => {
+      dispatch(setSuccess("New note added"))
+      dispatch(setNote(note))
+    })
+    .catch(() => {
+      dispatch(setError("Cannot add new note"))
+    })
+}
 
-    dispatch(setSuccess("New note added"))
-    dispatch(loadNotesAsync())
-  } catch {
-    dispatch(setError("Cannot add new note"))
-  }
+export const updateNoteAsync = (
+  id: number,
+  title: string
+): AppThunk => async dispatch => {
+  dispatch(setProgress())
+  fetch(`${rootDataUrl}/id`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title,
+    }),
+  })
+    .then(checkResponseStatus)
+    .then(response => response.json())
+    .then(note => {
+      dispatch(setSuccess("Note updated"))
+      dispatch(setNote(note))
+    })
+    .catch(() => {
+      dispatch(setError("Cannot update note"))
+    })
 }

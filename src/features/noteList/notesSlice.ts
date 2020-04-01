@@ -26,6 +26,13 @@ const notesSlice = createSlice({
     setNotes: (newState: NotesState, action: PayloadAction<Notes>) => {
       newState.notes = action.payload
     },
+    setNote: (newState: NotesState, action: PayloadAction<Note>) => {
+      const existingNode = newState.notes.find(
+        note => note.id === action.payload.id
+      )
+      if (existingNode) existingNode.title = action.payload.title
+      else newState.notes.push(action.payload)
+    },
   },
 })
 
@@ -40,5 +47,5 @@ export const loadNotesAsync = (): AppThunk => async dispatch => {
   }
 }
 
-export const { setNotes } = notesSlice.actions
+export const { setNote, setNotes } = notesSlice.actions
 export default notesSlice.reducer
