@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import { AppThunk } from '../../app/store'
-import { fetchJson } from '../../utils/data'
+import { AppThunk } from "../../app/store"
+import { fetchJson } from "../../app/data"
 
 /**
  * In the mock the "complete" Note with details is actually completely
@@ -20,20 +20,25 @@ interface NoteDetailsState {
 }
 
 const initialState: NoteDetailsState = {
-  noteDetails: undefined
+  noteDetails: undefined,
 }
 
 export const slice = createSlice({
   name: "noteDetails",
   initialState,
   reducers: {
-    setNoteDetails: (newState: NoteDetailsState, action: PayloadAction<NoteDetails | undefined>) => {
+    setNoteDetails: (
+      newState: NoteDetailsState,
+      action: PayloadAction<NoteDetails | undefined>
+    ) => {
       newState.noteDetails = action.payload
     },
   },
 })
 
-export const loadNoteDetailsAsync = (noteId: string): AppThunk => async dispatch => {
+export const loadNoteDetailsAsync = (
+  noteId: string
+): AppThunk => async dispatch => {
   const data = await fetchJson<NoteDetails>(`notes/${noteId}`)
   dispatch(setNoteDetails(data))
 }

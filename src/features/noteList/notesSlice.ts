@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import { AppThunk } from '../../app/store'
-import { fetchJson } from '../../utils/data'
+import { AppThunk } from "../../app/store"
+import { fetchJson } from "../../app/data"
 
 export interface Note {
   id: number

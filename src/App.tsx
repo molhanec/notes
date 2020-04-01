@@ -1,24 +1,21 @@
-import './App.css'
+import "./App.css"
 
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import React from "react"
+import { Routes } from "./routes/Routes"
+import { Link } from "react-router-dom"
 
-import NoteList from './features/noteList/NoteList'
-import NoteDetails from './features/noteDetails/NoteDetails'
-
-const Header = () => <header>Notes.</header>
+const Header = () => (
+  <header>
+    <Link to="/">Notes.</Link>
+  </header>
+)
 
 function App() {
   return (
     <>
       <Header></Header>
       <main>
-        <Router>
-          <Switch>
-            <Route path="/note/:noteId" component={NoteDetails} />
-            <Route component={NoteList} />
-          </Switch>
-        </Router>
+        <Routes />
       </main>
     </>
   )
