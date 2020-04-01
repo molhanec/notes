@@ -15,11 +15,10 @@ const checkResponseStatus = (response: Response) => {
   }
 }
 
-export const fetchJson = <T>(path: string) => {
-  return fetch(rootDataUrl + path)
+export const fetchJson = <T>(path: string) =>
+  fetch(rootDataUrl + path)
     .then(checkResponseStatus)
     .then(response => response!.json() as Promise<T>)
-}
 
 export const addNoteAsync = (title: string): AppThunk => async dispatch => {
   dispatch(setProgress())
