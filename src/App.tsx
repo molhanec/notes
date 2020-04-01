@@ -4,6 +4,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import NoteList from './features/noteList/NoteList'
+import NoteDetails from './features/noteDetails/NoteDetails'
 
 const Header = () => <header>Notes.</header>
 
@@ -14,10 +15,8 @@ function App() {
       <main>
         <Router>
           <Switch>
-            <Route path="/note/:noteId"></Route>
-            <Route>
-              <NoteList />
-            </Route>
+            <Route path="/note/:noteId" component={NoteDetails} />
+            <Route component={NoteList} />
           </Switch>
         </Router>
       </main>

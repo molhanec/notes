@@ -18,7 +18,7 @@ const initialState: NotesState = {
   notes: [],
 }
 
-export const slice = createSlice({
+export const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
@@ -33,5 +33,5 @@ export const loadNotesAsync = (): AppThunk => async dispatch => {
   dispatch(setNotes(data))
 }
 
-export const { setNotes } = slice.actions
-export default slice.reducer
+export const { setNotes } = notesSlice.actions
+export default notesSlice.reducer
