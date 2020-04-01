@@ -1,9 +1,8 @@
-import "react"
-import React, { useEffect } from 'react'
-import { connect, ResolveThunks } from 'react-redux'
+import React, { useEffect } from "react"
+import { connect, ResolveThunks } from "react-redux"
 
-import { RootState } from '../../app/store'
-import { loadNoteDetailsAsync, setNoteDetails } from './noteDetailsSlice'
+import { RootState } from "../../app/store"
+import { loadNoteDetailsAsync, setNoteDetails } from "./noteDetailsSlice"
 import { RouteComponentProps } from "react-router-dom"
 
 type RouterParams = RouteComponentProps<{
@@ -11,9 +10,15 @@ type RouterParams = RouteComponentProps<{
 }>
 
 type Props = ReturnType<typeof mapStateToProps> &
-  ResolveThunks<typeof mapDispatchToProps> & RouterParams
+  ResolveThunks<typeof mapDispatchToProps> &
+  RouterParams
 
-const NoteDetails: React.FC<Props> = ({ match, noteDetails, loadNoteDetailsAsync, setNoteDetails }: Props) => {
+const NoteDetails: React.FC<Props> = ({
+  match,
+  noteDetails,
+  loadNoteDetailsAsync,
+  setNoteDetails,
+}: Props) => {
   useEffect(() => {
     setNoteDetails(undefined)
     loadNoteDetailsAsync(match.params.noteId)
@@ -21,18 +26,25 @@ const NoteDetails: React.FC<Props> = ({ match, noteDetails, loadNoteDetailsAsync
 
   if (!noteDetails) return null
 
-  return <div>
-    <p>{noteDetails.id}</p>
-    <p>{noteDetails.title}</p>
-  </div>
+  return (
+    <div>
+      <p>{noteDetails.id}</p>
+      <p>{noteDetails.title}</p>
+    </div>
+  )
 }
 
-const mapStateToProps = (state: RootState) => ({ noteDetails: state.noteDetails.noteDetails })
+const mapStateToProps = (state: RootState) => ({
+  noteDetails: state.noteDetails.noteDetails,
+})
 
 const mapDispatchToProps = {
   loadNoteDetailsAsync,
   setNoteDetails,
 }
 
-const ConnectedNoteDetails = connect(mapStateToProps, mapDispatchToProps)(NoteDetails)
+const ConnectedNoteDetails = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NoteDetails)
 export default ConnectedNoteDetails

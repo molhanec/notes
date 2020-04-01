@@ -29,7 +29,7 @@ export const notesSlice = createSlice({
 })
 
 export const loadNotesAsync = (): AppThunk => async dispatch => {
-  const data = await fetchJson<Notes>("notes")
+  const data = await fetchJson<Notes>("")
   dispatch(setNotes(data))
 }
 

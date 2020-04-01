@@ -39,7 +39,7 @@ export const slice = createSlice({
 export const loadNoteDetailsAsync = (
   noteId: string
 ): AppThunk => async dispatch => {
-  const data = await fetchJson<NoteDetails>(`notes/${noteId}`)
+  const data = await fetchJson<NoteDetails>(`/${noteId}`)
   dispatch(setNoteDetails(data))
 }
 

@@ -14,6 +14,7 @@ export const NoteForm = ({ addNoteAsync }: Props) => {
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (title.trim()) addNoteAsync(title.trim())
+    setTitle("")
   }
 
   return (
