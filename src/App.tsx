@@ -3,7 +3,7 @@ import './App.css'
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import NoteList from './features/notes/NoteList'
+import NoteList from './features/noteList/NoteList'
 
 const Header = () => <header>Notes.</header>
 

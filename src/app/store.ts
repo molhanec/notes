@@ -3,7 +3,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 
 import counterReducer from '../features/counter/counterSlice'
-import notesReducer from '../features/notes/notesSlice'
+import notesReducer from '../features/noteList/notesSlice'
 
 export const history = createBrowserHistory()
 
