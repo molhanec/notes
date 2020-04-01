@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { AppThunk } from "../../app/store"
 import { fetchJson } from "../../app/data"
+import { setProgress, setSuccess, setError } from "../info/infoSlice"
 
 /**
  * In the mock the "complete" Note with details is actually completely
@@ -23,7 +24,7 @@ const initialState: NoteDetailsState = {
   noteDetails: undefined,
 }
 
-export const slice = createSlice({
+const slice = createSlice({
   name: "noteDetails",
   initialState,
   reducers: {
@@ -39,8 +40,14 @@ export const slice = createSlice({
 export const loadNoteDetailsAsync = (
   noteId: string
 ): AppThunk => async dispatch => {
-  const data = await fetchJson<NoteDetails>(`/${noteId}`)
-  dispatch(setNoteDetails(data))
+  dispatch(setProgress())
+  try {
+    const data = await fetchJson<NoteDetails>(`/${noteId}`)
+    dispatch(setSuccess(""))
+    dispatch(setNoteDetails(data))
+  } catch {
+    dispatch(setError("Cannot load notes"))
+  }
 }
 
 export const { setNoteDetails } = slice.actions

@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { AppThunk } from "../../app/store"
 import { fetchJson } from "../../app/data"
+import { setProgress, setError, setSuccess } from "../info/infoSlice"
 
 export interface Note {
   id: number
@@ -18,7 +19,7 @@ const initialState: NotesState = {
   notes: [],
 }
 
-export const notesSlice = createSlice({
+const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
@@ -29,8 +30,14 @@ export const notesSlice = createSlice({
 })
 
 export const loadNotesAsync = (): AppThunk => async dispatch => {
-  const data = await fetchJson<Notes>("")
-  dispatch(setNotes(data))
+  dispatch(setProgress())
+  try {
+    const data = await fetchJson<Notes>("")
+    dispatch(setSuccess(""))
+    dispatch(setNotes(data))
+  } catch {
+    dispatch(setError("Cannot load notes"))
+  }
 }
 
 export const { setNotes } = notesSlice.actions
