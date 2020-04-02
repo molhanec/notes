@@ -37,10 +37,7 @@ const NoteDetails: React.FC<Props> = ({
 
   return (
     <>
-      <EditNoteForm />
-      <button onClick={handleDelete} disabled={progress}>
-        Delete
-      </button>
+      <EditNoteForm onDelete={handleDelete} />
     </>
   )
 }

@@ -5,12 +5,15 @@ import { NoteForm } from "./NoteForm"
 import { RootState } from "../../app/store"
 
 type Props = ReturnType<typeof mapStateToProps> &
-  ResolveThunks<typeof mapDispatchToProps>
+  ResolveThunks<typeof mapDispatchToProps> & {
+    onDelete: () => void
+  }
 
 export const EditNoteForm = ({
   noteDetails,
   progress,
   updateNoteAsync,
+  onDelete,
 }: Props) => {
   const handleSubmit = (title: string): string => {
     if (!noteDetails.id) return title
@@ -22,6 +25,8 @@ export const EditNoteForm = ({
     <NoteForm
       disabled={!noteDetails || progress}
       onSubmit={handleSubmit}
+      onDelete={onDelete}
+      formHeader="Note details"
       initialTitle={noteDetails.title || ""}
     />
   )

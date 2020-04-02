@@ -13,7 +13,13 @@ export const NewNoteForm = ({ addNoteAsync, progress }: Props) => {
     return ""
   }
 
-  return <NoteForm onSubmit={handleSubmit} disabled={progress} />
+  return (
+    <NoteForm
+      formHeader="Create new note"
+      onSubmit={handleSubmit}
+      disabled={progress}
+    />
+  )
 }
 
 const mapStateToProps = (state: RootState) => ({
