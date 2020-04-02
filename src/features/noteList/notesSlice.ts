@@ -40,7 +40,7 @@ export const loadNotesAsync = (): AppThunk => async dispatch => {
   dispatch(setProgress())
   try {
     const data = await fetchJson<Notes>("")
-    dispatch(setSuccess(""))
+    dispatch(setProgress(false))
     dispatch(setNotes(data))
   } catch {
     dispatch(setError("Cannot load notes"))

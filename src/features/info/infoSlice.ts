@@ -16,12 +16,11 @@ const slice = createSlice({
   name: "info",
   initialState,
   reducers: {
-    setProgress: (newState: Info, action: PayloadAction<void>) => {
-      return {
-        progress: true,
-        error: undefined,
-        success: undefined,
-      }
+    setProgress: (
+      newState: Info,
+      action: PayloadAction<boolean | undefined>
+    ) => {
+      newState.progress = action.payload ?? true
     },
     setError: (newState: Info, action: PayloadAction<string>) => {
       return {
