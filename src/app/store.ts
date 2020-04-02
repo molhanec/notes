@@ -12,7 +12,7 @@ import notesReducer from "../features/noteList/notesSlice"
 import noteDetailsReducer from "../features/noteDetails/noteDetailsSlice"
 import infoReducer from "../features/info/infoSlice"
 
-export const history = createBrowserHistory({ forceRefresh: true })
+export const history = createBrowserHistory()
 
 export const store = configureStore({
   reducer: {
