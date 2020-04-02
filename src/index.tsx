@@ -1,9 +1,8 @@
-import "./index.css"
-
 import { ConnectedRouter } from "connected-react-router"
 import React from "react"
 import ReactDOM from "react-dom"
 import { Provider, ReactReduxContext } from "react-redux"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 import App from "./App"
 import { history, store } from "./app/store"
