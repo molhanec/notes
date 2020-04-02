@@ -47,8 +47,13 @@ export const NoteForm = ({
             value={title}
             onChange={titleChange}
             disabled={disabled}
+            autoFocus
           />
-          <Button disabled={disabled || !title.trim()} className="mt-3">
+          <Button
+            disabled={disabled || !title.trim()}
+            className="mt-3"
+            color="primary"
+          >
             Save
           </Button>
           {onDelete && (
@@ -56,7 +61,7 @@ export const NoteForm = ({
               color="danger"
               onClick={onDelete}
               disabled={disabled}
-              className="mt-3"
+              className="mt-3 ml-1"
             >
               Delete
             </Button>
