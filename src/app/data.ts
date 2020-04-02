@@ -5,8 +5,10 @@ import { push } from "connected-react-router"
 import { setNoteDetails } from "../features/noteDetails/noteDetailsSlice"
 import { batch } from "react-redux"
 
-const rootDataUrl =
-  "https://private-anon-3ab0da907c-note10.apiary-mock.com/notes"
+if (!process.env.REACT_APP_ROOT_URL) {
+  throw new Error("Please specify REACT_APP_ROOT_URL environment variable!")
+}
+const rootDataUrl = process.env.REACT_APP_ROOT_URL
 
 const checkResponseStatus = (response: Response) => {
   if (response.ok) {
