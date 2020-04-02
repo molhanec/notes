@@ -8,9 +8,9 @@ const Header = () => {
   const t = useTranslate()
   return (
     <header>
-      <Navbar dark color="dark" className="rounded my-3">
+      <Navbar tag="div" dark color="dark" className="rounded my-3">
         <Link to="/">
-          <NavbarBrand>{t("appTitle")}</NavbarBrand>
+          <NavbarBrand tag="span">{t("appTitle")}</NavbarBrand>
         </Link>
         <LanguageSwitch />
       </Navbar>

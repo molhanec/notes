@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App matches snapshot 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <header>
+      <div
+        class="rounded my-3 navbar navbar-dark bg-dark"
+      >
+        <a
+          href="/"
+        >
+          <span
+            class="navbar-brand"
+          >
+            Poznámky
+          </span>
+        </a>
+        <form
+          class="form-inline"
+        >
+          <div
+            class="btn-group"
+            role="group"
+          >
+            <button
+              class="btn btn-secondary active"
+              type="button"
+            >
+              Cz
+            </button>
+            <button
+              class="btn btn-secondary"
+              type="button"
+            >
+              En
+            </button>
+          </div>
+        </form>
+      </div>
+    </header>
+    <div
+      class="mb-4 progress"
+    >
+      <div
+        aria-valuemax="100"
+        aria-valuemin="0"
+        aria-valuenow="100"
+        class="progress-bar progress-bar-animated progress-bar-striped"
+        role="progressbar"
+        style="width: 100%;"
+      />
+    </div>
+    <main>
+      <div
+        class="card"
+      >
+        <div
+          class="card-header"
+        >
+          Vytvořit novou poznámku
+        </div>
+        <div
+          class="card-body"
+        >
+          <form
+            class=""
+          >
+            <label
+              class=""
+              for="title"
+            >
+              Nadpis
+            </label>
+            <input
+              class="form-control"
+              disabled=""
+              id="title"
+              type="text"
+              value=""
+            />
+            <button
+              class="mt-3 btn btn-primary disabled"
+              disabled=""
+            >
+              Uložit
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
