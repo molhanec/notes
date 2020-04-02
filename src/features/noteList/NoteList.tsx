@@ -25,7 +25,7 @@ const StyledCard = styled(Card)`
 type Props = ReturnType<typeof mapStateToProps> &
   ResolveThunks<typeof mapDispatchToProps>
 
-const NoteList: React.FC<Props> = ({
+export const NoteList: React.FC<Props> = ({
   notes,
   loadNotesAsync,
   setNoteDetails,

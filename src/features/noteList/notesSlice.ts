@@ -15,7 +15,7 @@ interface NotesState {
   notes: Notes
 }
 
-const initialState: NotesState = {
+export const initialState: NotesState = {
   notes: [],
 }
 

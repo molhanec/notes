@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NoteList> matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-AxirZ diIALt mb-3 card card-body bg-info"
+  >
+    <a
+      class="sc-AxjAm cgUheY stretched-link"
+      href="/note/1"
+    >
+      title 1
+    </a>
+  </div>
+  <div
+    class="sc-AxirZ diIALt mb-3 card card-body bg-info"
+  >
+    <a
+      class="sc-AxjAm cgUheY stretched-link"
+      href="/note/2"
+    >
+      title 2
+    </a>
+  </div>
+</div>
+`;
