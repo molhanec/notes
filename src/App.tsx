@@ -1,24 +1,23 @@
-import { BrowserRouter, Link } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 
 import React from "react"
 import { Routes } from "./routes/Routes"
 
 import Info from "./features/info/Info"
+import Header from "./features/header/Header"
 
-const Header = () => (
-  <header>
-    <Link to="/">Notes.</Link>
-  </header>
-)
+import { Container } from "reactstrap"
 
 function App() {
   return (
     <BrowserRouter>
-      <Header></Header>
-      <Info />
-      <main>
-        <Routes />
-      </main>
+      <Container>
+        <Header></Header>
+        <Info />
+        <main>
+          <Routes />
+        </main>
+      </Container>
     </BrowserRouter>
   )
 }

@@ -2,16 +2,18 @@ import React from "react"
 import { connect } from "react-redux"
 
 import { RootState } from "../../app/store"
+import { Card, Progress } from "reactstrap"
 
 type Props = ReturnType<typeof mapStateToProps>
 
 const Info: React.FC<Props> = ({ progress, error, success }: Props) => {
+  if (!progress && !error && !success) return null
+  if (progress) return <Progress animated value={100} className="mb-4" />
   return (
-    <div>
-      {progress && "PROGRESS!"}
+    <Card body inverse color={error ? "danger" : "success"} className="mb-4">
       {error && `ERROR: ${error}`}
       {success && `SUCCESS: ${success}`}
-    </div>
+    </Card>
   )
 }
 
