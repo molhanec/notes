@@ -1,15 +1,33 @@
-import React, { useEffect } from 'react'
-import { connect, ResolveThunks } from 'react-redux'
+import React, { useEffect } from "react"
+import { connect, ResolveThunks } from "react-redux"
 
-import { RootState } from '../../app/store'
-import { loadNotesAsync } from './notesSlice'
-import { Link } from 'react-router-dom'
-import { setNoteDetails } from '../noteDetails/noteDetailsSlice'
+import { RootState } from "../../app/store"
+import { loadNotesAsync } from "./notesSlice"
+import { setNoteDetails } from "../noteDetails/noteDetailsSlice"
+import { Card, CardLink } from "reactstrap"
+import styled from "styled-components"
+
+const StyledLink = styled(CardLink)`
+  color: white;
+  &:hover {
+    color: white;
+  }
+`
+
+const StyledCard = styled(Card)`
+  &:hover {
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+  }
+`
 
 type Props = ReturnType<typeof mapStateToProps> &
   ResolveThunks<typeof mapDispatchToProps>
 
-const NoteList: React.FC<Props> = ({ notes, loadNotesAsync,setNoteDetails }: Props) => {
+const NoteList: React.FC<Props> = ({
+  notes,
+  loadNotesAsync,
+  setNoteDetails,
+}: Props) => {
   useEffect(() => {
     setNoteDetails(undefined)
     loadNotesAsync()
@@ -18,9 +36,11 @@ const NoteList: React.FC<Props> = ({ notes, loadNotesAsync,setNoteDetails }: Pro
   return (
     <>
       {notes.map(note => (
-        <div key={note.id}>
-          <Link to={`/note/${note.id}`}>{note.title}</Link>
-        </div>
+        <StyledCard key={note.id} body color="info" className="mb-3">
+          <StyledLink href={`/note/${note.id}`} className="stretched-link">
+            {note.title}
+          </StyledLink>
+        </StyledCard>
       ))}
     </>
   )
