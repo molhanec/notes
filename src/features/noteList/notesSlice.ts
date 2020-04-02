@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { AppThunk } from "../../app/store"
 import { fetchJson } from "../../app/data"
-import { setProgress, setError, setSuccess } from "../info/infoSlice"
+import { setProgress, setError } from "../info/infoSlice"
 
 export interface Note {
   id: number
@@ -43,7 +43,7 @@ export const loadNotesAsync = (): AppThunk => async dispatch => {
     dispatch(setProgress(false))
     dispatch(setNotes(data))
   } catch {
-    dispatch(setError("Cannot load notes"))
+    dispatch(setError("notesLoadFailure"))
   }
 }
 

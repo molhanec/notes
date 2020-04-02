@@ -11,6 +11,7 @@ import counterReducer from "../features/counter/counterSlice"
 import notesReducer from "../features/noteList/notesSlice"
 import noteDetailsReducer from "../features/noteDetails/noteDetailsSlice"
 import infoReducer from "../features/info/infoSlice"
+import languageReducer from "../features/languageSwitch/languageSwitchSlice"
 
 export const history = createBrowserHistory()
 
@@ -21,6 +22,7 @@ export const store = configureStore({
     info: infoReducer,
     notes: notesReducer,
     noteDetails: noteDetailsReducer,
+    language: languageReducer,
   },
   middleware: [...getDefaultMiddleware(), routerMiddleware(history)],
 })

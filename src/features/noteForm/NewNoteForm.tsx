@@ -3,19 +3,19 @@ import { connect, ResolveThunks } from "react-redux"
 import { addNoteAsync } from "../../app/data"
 import { NoteForm } from "./NoteForm"
 import { RootState } from "../../app/store"
+import { useTranslate } from "./../../app/translations"
 
 type Props = ReturnType<typeof mapStateToProps> &
   ResolveThunks<typeof mapDispatchToProps>
 
 export const NewNoteForm = ({ addNoteAsync, progress }: Props) => {
-  const handleSubmit = (title: string) => {
-    addNoteAsync(title)
-    return ""
-  }
+  const t = useTranslate()
+
+  const handleSubmit = (title: string) => addNoteAsync(title)
 
   return (
     <NoteForm
-      formHeader="Create new note"
+      formHeader={t("newFormHeader")}
       onSubmit={handleSubmit}
       disabled={progress}
     />

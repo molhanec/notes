@@ -40,12 +40,12 @@ export const addNoteAsync = (title: string): AppThunk => async dispatch => {
     .then(response => response.json())
     .then(note => {
       batch(() => {
-        dispatch(setSuccess("New note added"))
+        dispatch(setSuccess("noteCreateSuccess"))
         dispatch(setNote(note))
       })
     })
     .catch(() => {
-      dispatch(setError("Cannot add new note"))
+      dispatch(setError("noteCreateFailure"))
     })
 }
 
@@ -67,12 +67,13 @@ export const updateNoteAsync = (
     .then(response => response.json())
     .then(note => {
       batch(() => {
-        dispatch(setSuccess("Note updated"))
         dispatch(setNote(note))
+        dispatch(setSuccess("noteUpdateSuccess"))
+        dispatch(push("/"))
       })
     })
     .catch(() => {
-      dispatch(setError("Cannot update note"))
+      dispatch(setError("noteUpdateFailure"))
     })
 }
 
@@ -85,11 +86,11 @@ export const deleteNoteAsync = (id: number): AppThunk => async dispatch => {
     .then(() => {
       batch(() => {
         dispatch(setNoteDetails(undefined))
-        dispatch(setSuccess("Note deleted"))
+        dispatch(setSuccess("noteDeleteSuccess"))
         dispatch(push("/"))
       })
     })
     .catch(() => {
-      dispatch(setError("Cannot delete note"))
+      dispatch(setError("noteDeleteFailure"))
     })
 }

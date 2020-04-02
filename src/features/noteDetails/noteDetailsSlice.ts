@@ -38,10 +38,10 @@ export const loadNoteDetailsAsync = (
   dispatch(setProgress())
   try {
     const data = await fetchJson<NoteDetails>(`/${noteId}`)
-    dispatch(setSuccess(""))
+    dispatch(setSuccess(undefined))
     dispatch(setNoteDetails(data))
   } catch {
-    dispatch(setError("Cannot load notes"))
+    dispatch(setError("noteLoadFailure"))
   }
 }
 

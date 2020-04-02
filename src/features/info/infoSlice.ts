@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { PhraseKeys } from "../../app/translations"
 
 export interface Info {
   progress: boolean
-  error?: string
-  success?: string
+  error?: PhraseKeys
+  success?: PhraseKeys
 }
 
 const initialState: Info = {
@@ -22,14 +23,20 @@ const slice = createSlice({
     ) => {
       newState.progress = action.payload ?? true
     },
-    setError: (newState: Info, action: PayloadAction<string>) => {
+    setError: (
+      newState: Info,
+      action: PayloadAction<PhraseKeys | undefined>
+    ) => {
       return {
         progress: false,
         error: action.payload,
         success: undefined,
       }
     },
-    setSuccess: (newState: Info, action: PayloadAction<string>) => {
+    setSuccess: (
+      newState: Info,
+      action: PayloadAction<PhraseKeys | undefined>
+    ) => {
       return {
         progress: false,
         error: undefined,

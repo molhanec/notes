@@ -1,4 +1,5 @@
 import React, { FormEvent, useState, ChangeEvent } from "react"
+import { useTranslate } from "../../app/translations"
 import {
   Form,
   Label,
@@ -13,7 +14,7 @@ type Props = {
   formHeader: string
   initialTitle?: string
   disabled?: boolean
-  onSubmit: (title: string) => string
+  onSubmit: (title: string) => void
   onDelete?: () => void
 }
 
@@ -25,6 +26,7 @@ export const NoteForm = ({
   onDelete,
 }: Props) => {
   const [title, setTitle] = useState<string>(initialTitle)
+  const t = useTranslate()
 
   const titleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value)
@@ -33,7 +35,7 @@ export const NoteForm = ({
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (!title.trim()) return
-    setTitle(onSubmit(title.trim()))
+    onSubmit(title.trim())
   }
 
   return (
@@ -41,7 +43,7 @@ export const NoteForm = ({
       <CardHeader>{formHeader}</CardHeader>
       <CardBody>
         <Form onSubmit={submit}>
-          <Label htmlFor="title">Title </Label>
+          <Label htmlFor="title">{t("formTitle")}</Label>
           <Input
             id="title"
             value={title}
@@ -54,7 +56,7 @@ export const NoteForm = ({
             className="mt-3"
             color="primary"
           >
-            Save
+            {t("formSave")}
           </Button>
           {onDelete && (
             <Button
@@ -63,7 +65,7 @@ export const NoteForm = ({
               disabled={disabled}
               className="mt-3 ml-1"
             >
-              Delete
+              {t("formDelete")}
             </Button>
           )}
         </Form>

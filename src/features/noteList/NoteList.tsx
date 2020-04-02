@@ -4,13 +4,15 @@ import { connect, ResolveThunks } from "react-redux"
 import { RootState } from "../../app/store"
 import { loadNotesAsync } from "./notesSlice"
 import { setNoteDetails } from "../noteDetails/noteDetailsSlice"
-import { Card, CardLink } from "reactstrap"
+import { Card } from "reactstrap"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-const StyledLink = styled(CardLink)`
+const StyledLink = styled(Link)`
   color: white;
   &:hover {
     color: white;
+    text-decoration: none;
   }
 `
 
@@ -37,7 +39,7 @@ const NoteList: React.FC<Props> = ({
     <>
       {notes.map(note => (
         <StyledCard key={note.id} body color="info" className="mb-3">
-          <StyledLink href={`/note/${note.id}`} className="stretched-link">
+          <StyledLink to={`/note/${note.id}`} className="stretched-link">
             {note.title}
           </StyledLink>
         </StyledCard>

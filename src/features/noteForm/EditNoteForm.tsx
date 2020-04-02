@@ -3,6 +3,7 @@ import { connect, ResolveThunks } from "react-redux"
 import { updateNoteAsync } from "../../app/data"
 import { NoteForm } from "./NoteForm"
 import { RootState } from "../../app/store"
+import { useTranslate } from "./../../app/translations"
 
 type Props = ReturnType<typeof mapStateToProps> &
   ResolveThunks<typeof mapDispatchToProps> & {
@@ -15,10 +16,11 @@ export const EditNoteForm = ({
   updateNoteAsync,
   onDelete,
 }: Props) => {
-  const handleSubmit = (title: string): string => {
-    if (!noteDetails.id) return title
+  const t = useTranslate()
+
+  const handleSubmit = (title: string) => {
+    if (!noteDetails.id) return
     updateNoteAsync(noteDetails.id, title)
-    return title
   }
 
   return (
@@ -26,7 +28,7 @@ export const EditNoteForm = ({
       disabled={!noteDetails || progress}
       onSubmit={handleSubmit}
       onDelete={onDelete}
-      formHeader="Note details"
+      formHeader={t("editFormHeader")}
       initialTitle={noteDetails.title || ""}
     />
   )

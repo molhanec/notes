@@ -3,16 +3,19 @@ import { connect } from "react-redux"
 
 import { RootState } from "../../app/store"
 import { Card, Progress } from "reactstrap"
+import { useTranslate } from "./../../app/translations"
 
 type Props = ReturnType<typeof mapStateToProps>
 
 const Info: React.FC<Props> = ({ progress, error, success }: Props) => {
+  const t = useTranslate()
+
   if (!progress && !error && !success) return null
   if (progress) return <Progress animated value={100} className="mb-4" />
   return (
     <Card body inverse color={error ? "danger" : "success"} className="mb-4">
-      {error && `ERROR: ${error}`}
-      {success && `SUCCESS: ${success}`}
+      {error && t(error)}
+      {success && t(success)}
     </Card>
   )
 }
