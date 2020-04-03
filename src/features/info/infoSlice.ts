@@ -7,7 +7,7 @@ export interface Info {
   success?: PhraseKeys
 }
 
-const initialState: Info = {
+export const initialState: Info = {
   progress: false,
   error: undefined,
   success: undefined,
