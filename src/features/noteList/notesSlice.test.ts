@@ -4,9 +4,6 @@ import reducer, {
   setNotes,
   loadNotesAsync,
 } from "./notesSlice"
-import { act } from "react-dom/test-utils"
-import { setProgress } from "../info/infoSlice"
-import { fetchJson } from "./../../utils/data"
 
 jest.mock("../../app/data", () => {
   return {

@@ -15,13 +15,12 @@ type Props = ReturnType<typeof mapStateToProps> &
   ResolveThunks<typeof mapDispatchToProps> &
   RouterParams
 
-const NoteDetails: React.FC<Props> = ({
+export const NoteDetails: React.FC<Props> = ({
   match,
   noteDetails,
   loadNoteDetailsAsync,
   setNoteDetails,
   deleteNoteAsync,
-  progress,
 }: Props) => {
   useEffect(() => {
     setNoteDetails(undefined)
@@ -44,7 +43,6 @@ const NoteDetails: React.FC<Props> = ({
 
 const mapStateToProps = (state: RootState) => ({
   noteDetails: state.noteDetails,
-  progress: state.info.progress,
 })
 
 const mapDispatchToProps = {

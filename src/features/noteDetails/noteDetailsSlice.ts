@@ -16,7 +16,7 @@ export interface NoteDetails {
   title?: string
 }
 
-const initialState: NoteDetails = {
+export const initialState: NoteDetails = {
   id: undefined,
   title: undefined,
 }
