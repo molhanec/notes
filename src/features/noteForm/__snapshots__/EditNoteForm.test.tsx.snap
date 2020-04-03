@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EditNoteForm> matches snapshot 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <div
+      class="card-header"
+    >
+      Detaily poznámky
+    </div>
+    <div
+      class="card-body"
+    >
+      <form
+        class=""
+      >
+        <label
+          class=""
+          for="title"
+        >
+          Nadpis
+        </label>
+        <input
+          class="form-control"
+          id="title"
+          type="text"
+          value="title"
+        />
+        <button
+          class="mt-3 btn btn-primary"
+        >
+          Uložit
+        </button>
+        <button
+          class="mt-3 ml-1 btn btn-danger"
+          type="button"
+        >
+          Smazat
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
