@@ -10,13 +10,15 @@ type Props = ReturnType<typeof mapStateToProps>
 const Info: React.FC<Props> = ({ progress, error, success }: Props) => {
   const t = useTranslate()
 
-  if (!progress && !error && !success) return null
   if (progress) return <Progress animated value={100} className="mb-4" />
   return (
-    <Card body inverse color={error ? "danger" : "success"} className="mb-4">
-      {error && t(error)}
-      {success && t(success)}
-    </Card>
+    <>
+      <Progress color="secondary" value={100} className="mb-4" />
+      {(error || success) && <Card body inverse color={error ? "danger" : "success"} className="mb-4">
+        {error && t(error)}
+        {success && t(success)}
+      </Card>}
+    </>
   )
 }
 
