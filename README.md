@@ -24,9 +24,12 @@ Tested with the version 1.13.0
 
 ## Running in the development mode
 
-Run the command
+Run the commands:
 
-`yarn start`
+```
+yarn
+yarn start
+```
 
 in the project directory.
 
@@ -38,6 +41,7 @@ Open [http://localhost:9000](http://localhost:9000) to view it in the browser.
 You can run the production build like this:
 
 ```
+yarn
 yarn build
 yarn global add serve  # Not necessary if you already done it
 serve -s build
