@@ -5,7 +5,7 @@ export interface Language {
   code: LanguageCodes
 }
 
-const initialState: Language = {
+export const initialState: Language = {
   code: defaultLanguage,
 }
 

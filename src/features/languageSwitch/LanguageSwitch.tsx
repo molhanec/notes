@@ -7,7 +7,10 @@ import { connect, ResolveThunks } from "react-redux"
 type Props = ReturnType<typeof mapStateToProps> &
   ResolveThunks<typeof mapDispatchToProps>
 
-const LanguageSwitch: React.FC<Props> = ({ language, setLanguage }: Props) => {
+export const LanguageSwitch: React.FC<Props> = ({
+  language,
+  setLanguage,
+}: Props) => {
   return (
     <Form inline>
       <ButtonGroup>

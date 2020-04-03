@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LanguageSwitch> matches snapshot 1`] = `
+<div>
+  <form
+    class="form-inline"
+  >
+    <div
+      class="btn-group"
+      role="group"
+    >
+      <button
+        class="btn btn-secondary active"
+        type="button"
+      >
+        Cz
+      </button>
+      <button
+        class="btn btn-secondary"
+        type="button"
+      >
+        En
+      </button>
+    </div>
+  </form>
+</div>
+`;
