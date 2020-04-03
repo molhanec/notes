@@ -1,44 +1,66 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Notes App
 
-## Available Scripts
+Notes App demo project for BSC.
 
-In the project directory, you can run:
+Author: [Michal Molhanec](https://github.com/molhanec)
 
-### `yarn start`
+## Supported Browsers
+
+The app was succesfully tested on Windows 10 x64 using the following
+browsers:
+
+- Google Chrome 80.0.3987.163 (64bit)
+- Mozilla Firefox 74.0 (64bit)
+
+## Prerequisities
+
+### NodeJS + Yarn 1
+
+To install NodeJS: https://nodejs.org/en/ \
+Tested with the version 12.9.1.
+
+To install Yarn: https://classic.yarnpkg.com/en/docs/install \
+Tested with the version 1.13.0
+
+## Running in the development mode
+
+Run the command
+
+`yarn start`
+
+in the project directory.
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:9000](http://localhost:9000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Running the production build
 
-### `yarn test`
+You can run the production build like this:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn build
+yarn global add serve  # Not necessary if you already done it
+serve -s build
+```
 
-### `yarn build`
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Running the tests
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Run `yarn test` in the project directory.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Used technologies
 
-### `yarn eject`
+- [Create React App](https://github.com/facebook/create-react-app)
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+- [Bootstrap](https://getbootstrap.com/)
+- [Reactstrap](https://reactstrap.github.io/)
+- [Styled Components](https://www.styled-components.com/)
+- [React Router](https://reacttraining.com/react-router/)
+- [Connected React Router](https://github.com/supasate/connected-react-router)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+and their dependencies.
