@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header> matches snapshot 1`] = `
+<div>
+  <header>
+    <div
+      class="rounded my-3 navbar navbar-dark bg-dark"
+    >
+      <a
+        href="/"
+      >
+        <span
+          class="navbar-brand"
+        >
+          Poznámky
+        </span>
+      </a>
+      <form
+        class="form-inline"
+      >
+        <div
+          class="btn-group"
+          role="group"
+        >
+          <button
+            class="btn btn-secondary active"
+            type="button"
+          >
+            Cz
+          </button>
+          <button
+            class="btn btn-secondary"
+            type="button"
+          >
+            En
+          </button>
+        </div>
+      </form>
+    </div>
+  </header>
+</div>
+`;
